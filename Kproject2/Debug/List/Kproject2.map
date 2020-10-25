@@ -1,0 +1,215 @@
+###############################################################################
+#
+# IAR ELF Linker V8.40.2.214/W32 for ARM                  25/Oct/2020  21:59:04
+# Copyright 2007-2019 IAR Systems AB.
+#
+#    Output file  =
+#        C:\Users\Николаос\Documents\MyIARprojects\Lab2\Kproject2\Debug\Exe\Kproject2.out
+#    Map file     =
+#        C:\Users\Николаос\Documents\MyIARprojects\Lab2\Kproject2\Debug\List\Kproject2.map
+#    Command line =
+#        -f C:\Users\D13C~1\AppData\Local\Temp\EW5007.tmp
+#        (C:\Users\Николаос\Documents\MyIARprojects\Lab2\Kproject2\Debug\Obj\main.o
+#        --no_out_extension -o
+#        C:\Users\Николаос\Documents\MyIARprojects\Lab2\Kproject2\Debug\Exe\Kproject2.out
+#        --redirect _Printf=_PrintfFullNoMb --redirect _Scanf=_ScanfFullNoMb
+#        --map
+#        C:\Users\Николаос\Documents\MyIARprojects\Lab2\Kproject2\Debug\List\Kproject2.map
+#        --config "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        8.3\arm\CONFIG\generic_cortex.icf" --semihosting --entry
+#        __iar_program_start --vfe --text_out locale)
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor        = *
+__CPP_Exceptions = Disabled
+__CPP_Language   = C++14
+__Heap_Handler   = Basic
+__SystemLibrary  = DLib
+__dlib_version   = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The basic heap was selected because no calls to memory allocation
+functions were found in the application outside of system library
+functions, and there are calls to deallocation functions in the
+application.
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at address 0x0 { ro section .intvec };
+"P1":  place in [from 0x0 to 0x7'ffff] { ro };
+define block CSTACK with size = 1K, alignment = 8 { };
+define block PROC_STACK with size = 0, alignment = 8 { };
+define block HEAP with size = 2K, alignment = 8 { };
+"P2":  place in [from 0x2000'0000 to 0x2000'ffff] {
+          rw, block CSTACK, block PROC_STACK, block HEAP };
+initialize by copy { rw };
+
+  Section            Kind         Address   Size  Object
+  -------            ----         -------   ----  ------
+"A0":                                       0x40
+  .intvec            ro code          0x0   0x40  vector_table_M.o [5]
+                                   - 0x40   0x40
+
+"P1":                                      0x230
+  .text              ro code         0x40   0xe2  FltAdd.o [4]
+  .text              ro code        0x122   0x2e  copy_init3.o [5]
+  .text              ro code        0x150   0x74  FltSub.o [4]
+  .text              ro code        0x1c4   0x28  data_init.o [5]
+  .iar.init_table    const          0x1ec   0x14  - Linker created -
+  .text              ro code        0x200   0x1e  cmain.o [5]
+  .text              ro code        0x21e    0x4  low_level_init.o [2]
+  .text              ro code        0x222    0x2  vector_table_M.o [5]
+  .text              ro code        0x224   0x18  main.o [1]
+  .text              ro code        0x23c    0x4  exit.o [2]
+  .text              ro code        0x240    0xa  cexit.o [5]
+  .rodata            const          0x24a    0x1  unwind_debug.o [6]
+  .text              ro code        0x24c   0x14  exit.o [6]
+  .text              ro code        0x260    0xc  cstartup_M.o [5]
+  Initializer bytes  const          0x26c    0x4  <for P2-1>
+  .rodata            const          0x270    0x0  copy_init3.o [5]
+                                  - 0x270  0x230
+
+"P2", part 1 of 2:                           0x4
+  P2-1                        0x2000'0000    0x4  <Init block>
+    .data            inited   0x2000'0000    0x4  main.o [1]
+                            - 0x2000'0004    0x4
+
+"P2", part 2 of 2:                         0x400
+  CSTACK                      0x2000'0008  0x400  <Block>
+    CSTACK           uninit   0x2000'0008  0x400  <Block tail>
+                            - 0x2000'0408  0x400
+
+Unused ranges:
+
+         From           To      Size
+         ----           --      ----
+        0x270     0x7'ffff  0x7'fd90
+  0x2000'0004  0x2000'0007       0x4
+  0x2000'0408  0x2000'ffff    0xfbf8
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address      Size
+          -------      ----
+Copy (__iar_copy_init3)
+    1 source range, total size 0x4:
+                0x26c   0x4
+    1 destination range, total size 0x4:
+          0x2000'0000   0x4
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module            ro code  ro data  rw data
+    ------            -------  -------  -------
+command line/config:
+    -------------------------------------------
+    Total:
+
+C:\Users\Николаос\Documents\MyIARprojects\Lab2\Kproject2\Debug\Obj: [1]
+    main.o                 24        4        4
+    -------------------------------------------
+    Total:                 24        4        4
+
+dl7M_tln.a: [2]
+    exit.o                  4
+    low_level_init.o        4
+    -------------------------------------------
+    Total:                  8
+
+dlpp7M_tl_nc.a: [3]
+    -------------------------------------------
+    Total:
+
+m7M_tl.a: [4]
+    FltAdd.o              226
+    FltSub.o              116
+    -------------------------------------------
+    Total:                342
+
+rt7M_tl.a: [5]
+    cexit.o                10
+    cmain.o                30
+    copy_init3.o           46
+    cstartup_M.o           12
+    data_init.o            40
+    vector_table_M.o       66
+    -------------------------------------------
+    Total:                204
+
+shb_l.a: [6]
+    exit.o                 20
+    unwind_debug.o                   1
+    -------------------------------------------
+    Total:                 20        1
+
+    Gaps                    1
+    Linker created                  20    1'024
+-----------------------------------------------
+    Grand Total:          599       25    1'028
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                       Address  Size  Type      Object
+-----                       -------  ----  ----      ------
+.iar.init_table$$Base         0x1ec         --   Gb  - Linker created -
+.iar.init_table$$Limit        0x200         --   Gb  - Linker created -
+?main                         0x201        Code  Gb  cmain.o [5]
+CSTACK$$Base            0x2000'0008         --   Gb  - Linker created -
+CSTACK$$Limit           0x2000'0408         --   Gb  - Linker created -
+Region$$Table$$Base           0x1ec         --   Gb  - Linker created -
+Region$$Table$$Limit          0x200         --   Gb  - Linker created -
+__aeabi_fadd                   0x41        Code  Gb  FltAdd.o [4]
+__cmain                       0x201        Code  Gb  cmain.o [5]
+__exit                        0x24d  0x14  Code  Gb  exit.o [6]
+__iar_copy_init3              0x123  0x2e  Code  Gb  copy_init3.o [5]
+__iar_data_init3              0x1c5  0x28  Code  Gb  data_init.o [5]
+__iar_debug_exceptions        0x24a   0x1  Data  Gb  unwind_debug.o [6]
+__iar_fadd                    0x151        Code  Gb  FltSub.o [4]
+__iar_fsub                     0x4d        Code  Gb  FltAdd.o [4]
+__iar_fsubStart                0x5d        Code  Gb  FltAdd.o [4]
+__iar_program_start           0x261        Code  Gb  cstartup_M.o [5]
+__low_level_init              0x21f   0x4  Code  Gb  low_level_init.o [2]
+__vector_table                  0x0        Data  Gb  vector_table_M.o [5]
+_call_main                    0x20d        Code  Gb  cmain.o [5]
+_exit                         0x241        Code  Gb  cexit.o [5]
+_main                         0x21b        Code  Gb  cmain.o [5]
+exit                          0x23d   0x4  Code  Gb  exit.o [2]
+main                          0x225  0x18  Code  Gb  main.o [1]
+var1                    0x2000'0000   0x4  Data  Gb  main.o [1]
+
+
+[1] = C:\Users\Николаос\Documents\MyIARprojects\Lab2\Kproject2\Debug\Obj
+[2] = dl7M_tln.a
+[3] = dlpp7M_tl_nc.a
+[4] = m7M_tl.a
+[5] = rt7M_tl.a
+[6] = shb_l.a
+
+    599 bytes of readonly  code memory
+     25 bytes of readonly  data memory
+  1'028 bytes of readwrite data memory
+
+Errors: none
+Warnings: none
